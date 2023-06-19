@@ -58,7 +58,7 @@ class ProductList {
         for (const prod of this.products) {
            const productItem = new ProductItem(prod)
            const prodEl = productItem.render()
-            prodList.append(prodEl);
+           prodList.append(prodEl);
         }
         renderHook.append(prodList);
     }
