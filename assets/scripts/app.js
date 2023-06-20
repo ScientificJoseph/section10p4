@@ -4,7 +4,7 @@ class Product {
     // description;
     // price;
 
-    constructor(title, image, desc, price){
+    constructor(title, image, desc, price){ //on invokation a new object is created 
         this.title = title;
         this.imageUrl = image;
         this.description = desc;
@@ -15,6 +15,11 @@ class Product {
 class ProductItem {
     constructor(product) { // receives product objects from product array 
         this.product = product // assigns object received to product property as a value
+    }
+
+    addToCart() {
+        console.log('Adding Product To Cart...')
+        console.log(this.product)
     }
 
     render() {
@@ -31,6 +36,8 @@ class ProductItem {
                     </div>
                 </div>
             `;
+        const addCartButton = prodEl.querySelector('button');
+        addCartButton.addEventListener('click', this.addToCart.bind(this))
         return prodEl;
     }
 }
@@ -57,7 +64,7 @@ class ProductList {
         prodList.className = 'product-list';
         for (const prod of this.products) { //iterates through the objects in products array and stors objects in prod
            const productItem = new ProductItem(prod) // calls ProductItem and passes prod objects as arguments to ProductItem
-           const prodEl = productItem.render() //calls render method which builds and returns HTML formated list of products
+           const prodEl = productItem.render() //calls render method which builds from prod objects recieved and returns HTML formated list of products
            prodList.append(prodEl); //appends list item to ul
         }
         renderHook.append(prodList); //appends ul to div
