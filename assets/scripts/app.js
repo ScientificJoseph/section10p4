@@ -43,7 +43,7 @@ class ProductList {
             'A Soft Pillow', 
             19.99
         ),
-        new Product( // calss product class and passes arguments ro constructor 
+        new Product( // callss product class and passes arguments to constructor 
             'A Rug', 
             'http://tiny.cc/co48vz',
             'We Buid To Your Design',
