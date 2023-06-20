@@ -4,7 +4,7 @@ class Product {
     // description;
     // price;
 
-    constructor(title, image, desc, price){
+    constructor(title, image, desc, price){ //creates and initializes an object instance of a class
         this.title = title;
         this.imageUrl = image;
         this.description = desc;
@@ -37,13 +37,13 @@ class ProductItem {
 
 class ProductList {
     products = [
-        new Product( // calls product class and passes arguments to constructor instantiate
+        new Product( // calls product class constructor and passes arguments to constructor instantiate
             'A Pillow', 
             'http://tiny.cc/en48vz', 
             'A Soft Pillow', 
             19.99
         ),
-        new Product( // calss product class and passes arguments ro constructor 
+        new Product( // calss product class constructor and passes arguments ro constructor 
             'A Rug', 
             'http://tiny.cc/co48vz',
             'We Buid To Your Design',
@@ -65,5 +65,5 @@ class ProductList {
 }
 
 
-const productList = new ProductList //
+const productList = new ProductList 
 productList.render()
