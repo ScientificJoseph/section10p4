@@ -12,6 +12,20 @@ class Product {
     }
 }
 
+class ShoppingCart {
+    items = []
+
+    render() {
+        const cartEl = document.createElement('section');
+        cartEl.innerHTML = `
+            <h2>Total: \$${0.00}</h2>
+            <button>Order Now!</button>
+        `;
+        cartEl.className = 'cart';
+        return cartEl;
+    }
+}
+
 class ProductItem {
     constructor(product) { // receives product objects from product array 
         this.product = product // assigns object received to product property as a value
@@ -59,7 +73,7 @@ class ProductList {
     ];
     constructor() {}
     render() {
-        const renderHook = document.getElementById('app');
+        
         const prodList = document.createElement('ul');
         prodList.className = 'product-list';
         for (const prod of this.products) { //iterates through the objects in products array and stors objects in prod
@@ -67,10 +81,22 @@ class ProductList {
            const prodEl = productItem.render() //calls render method which builds from prod objects recieved and returns HTML formated list of products
            prodList.append(prodEl); //appends list item to ul
         }
-        renderHook.append(prodList); //appends ul to div
+      return prodList
     }
 }
 
+class Shop {
+    render() {
+        const renderHook = document.getElementById('app');
+        const cart = new ShoppingCart()
+        const cartEl = cart.render();
+        const productList = new ProductList()
+        const prodListEl = productList.render()
+        renderHook.append(cartEl); //appends ul to div
+        renderHook.append(prodListEl); //appends ul to div
+    }
+}
 
-const productList = new ProductList //
-productList.render()
+const shop = new Shop()
+shop.render()
+
