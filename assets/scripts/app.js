@@ -13,8 +13,8 @@ class Product {
 }
 
 class ProductItem {
-    constructor(product) {
-        this.product = product
+    constructor(product) { // receives product objects from product array 
+        this.product = product // assigns object received to product property as a value
     }
 
     render() {
@@ -37,13 +37,13 @@ class ProductItem {
 
 class ProductList {
     products = [
-        new Product(
+        new Product( // calls product class and passes arguments to constructor instantiate
             'A Pillow', 
             'http://tiny.cc/en48vz', 
             'A Soft Pillow', 
             19.99
         ),
-        new Product(
+        new Product( // calss product class and passes arguments ro constructor 
             'A Rug', 
             'http://tiny.cc/co48vz',
             'We Buid To Your Design',
@@ -55,15 +55,15 @@ class ProductList {
         const renderHook = document.getElementById('app');
         const prodList = document.createElement('ul');
         prodList.className = 'product-list';
-        for (const prod of this.products) {
-           const productItem = new ProductItem(prod)
-           const prodEl = productItem.render()
-           prodList.append(prodEl);
+        for (const prod of this.products) { //iterates through the objects in products array and stors objects in prod
+           const productItem = new ProductItem(prod) // calls ProductItem and passes prod objects as arguments to ProductItem
+           const prodEl = productItem.render() //calls render method which builds and returns HTML formated list of products
+           prodList.append(prodEl); //appends list item to ul
         }
-        renderHook.append(prodList);
+        renderHook.append(prodList); //appends ul to div
     }
 }
 
 
-const productList = new ProductList
+const productList = new ProductList //
 productList.render()
