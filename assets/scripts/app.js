@@ -4,7 +4,7 @@ class Product {
     // description;
     // price;
 
-    constructor(title, image, desc, price){ //creates and initializes an object instance of a class
+    constructor(title, image, desc, price){
         this.title = title;
         this.imageUrl = image;
         this.description = desc;
@@ -12,9 +12,28 @@ class Product {
     }
 }
 
+class ShoppingCart {
+    items = []
+
+    render() {
+        const cartEl = document.createElement('section');
+        cartEl.innerHTML = `
+            <h2>Total: \$${0.00}</h2>
+            <button>Order Now!</button>
+        `;
+        cartEl.className = 'cart';
+        return cartEl;
+    }
+}
+
 class ProductItem {
     constructor(product) { // receives product objects from product array 
         this.product = product // assigns object received to product property as a value
+    }
+
+    addToCart() {
+        console.log('Adding Product To Cart...')
+        console.log(this.product)
     }
 
     render() {
@@ -31,6 +50,8 @@ class ProductItem {
                     </div>
                 </div>
             `;
+        const addCartButton = prodEl.querySelector('button');
+        addCartButton.addEventListener('click', this.addToCart.bind(this))
         return prodEl;
     }
 }
@@ -43,7 +64,7 @@ class ProductList {
             'A Soft Pillow', 
             19.99
         ),
-        new Product( // calss product class constructor and passes arguments ro constructor 
+        new Product( // calss product class and passes arguments ro constructor 
             'A Rug', 
             'http://tiny.cc/co48vz',
             'We Buid To Your Design',
@@ -52,18 +73,33 @@ class ProductList {
     ];
     constructor() {}
     render() {
-        const renderHook = document.getElementById('app');
+        
         const prodList = document.createElement('ul');
         prodList.className = 'product-list';
         for (const prod of this.products) { //iterates through the objects in products array and stors objects in prod
            const productItem = new ProductItem(prod) // calls ProductItem and passes prod objects as arguments to ProductItem
-           const prodEl = productItem.render() //calls render method which builds and returns HTML formated list of products
+           const prodEl = productItem.render() //calls render method which builds from prod objects recieved and returns HTML formated list of products
            prodList.append(prodEl); //appends list item to ul
         }
-        renderHook.append(prodList); //appends ul to div
+      return prodList
     }
 }
 
+class Shop {
+    render() {
+        const renderHook = document.getElementById('app');
+        const cart = new ShoppingCart()
+        const cartEl = cart.render();
+        const productList = new ProductList()
+        const prodListEl = productList.render()
+        renderHook.append(cartEl); //appends ul to div
+        renderHook.append(prodListEl); //appends ul to div
+    }
+}
 
-const productList = new ProductList 
+const shop = new Shop()
+shop.render()
+
+
+const productList = new ProductList //
 productList.render()
