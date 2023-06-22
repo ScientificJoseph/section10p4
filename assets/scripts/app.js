@@ -42,7 +42,7 @@ class ProductItem {
 
     }
 
-    render() {
+    render() { //used to render actual list element to page
          const prodEl = document.createElement('li');
          prodEl.className = 'product-item';
          prodEl.innerHTML = `
