@@ -99,7 +99,7 @@ class Shop {
         const productList = new ProductList()
         const prodListEl = productList.render()
 
-        renderHook.append(cartEl); //appends ul to #app div
+        renderHook.append(cartEl); //appends cart to #app div
         renderHook.append(prodListEl); //appends ul to #app div
     }
 }
