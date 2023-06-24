@@ -111,7 +111,6 @@ class App {
         const shop = new Shop()
         shop.render()
         this.cart = shop.cart;
-
     }
 
     static addProductToCart(product) {
